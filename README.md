@@ -8,5 +8,17 @@ Python script does the following:
 - For a particular item, checks every city for inventory and outputs them all at the end
 
 ## Pre-run Instructions:
-1. Install Selenium:
+Requirements: 
+* Chrome 87
+* Windows
+
+If not on Windows, just get the appropriate OS binary [here](https://sites.google.com/a/chromium.org/chromedriver/downloads) and fix line 10. Similarly, can switch Chrome to a different browser, and also fix line 10.
+
+Install Selenium:
 ``` pip install selenium ```
+
+## Run Instructions:
+```python inventory.py```
+
+When prompted, type the full URL.
+Example: ```https://shop.lululemon.com/p/womens-joggers/Dance-Studio-Jogger-29/_/prod9000211?color=47780&sz=10```
