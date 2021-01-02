@@ -22,3 +22,5 @@ Install Selenium:
 
 When prompted, type the full URL.
 Example: ```https://shop.lululemon.com/p/womens-joggers/Dance-Studio-Jogger-29/_/prod9000211?color=47780&sz=10```
+
+Like all web scrapers, might break if the site changes ¯\\_( ͠° ͟ʖ °͠ )_/¯
