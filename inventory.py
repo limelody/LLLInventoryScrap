@@ -5,16 +5,17 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.expected_conditions import presence_of_element_located
 import time
 
-#This example requires Selenium WebDriver 3.13 or newer
 url = input("Enter product url: ")
 with webdriver.Chrome('chromedriver') as driver:
   wait = WebDriverWait(driver, 10)
   # city scrapping
   driver.get("https://shop.lululemon.com/stores/all-lululemon-stores")
   wait.until(presence_of_element_located((By.CLASS_NAME,"state-section-container")))
+  # let it load out so i can see
   time.sleep(5)
   driver.find_element_by_css_selector("#filter-all-store-locations").click()
   driver.find_element_by_css_selector("#filter-all-store-locations > option:nth-child(1)").click()
+  # let it load out so i can see
   time.sleep(5)
   locations = driver.find_elements_by_class_name("lll-font-body-secondary")
   cities = set()
@@ -42,23 +43,33 @@ with webdriver.Chrome('chromedriver') as driver:
       err = driver.find_element_by_class_name("error-message")
       continue
     except:
-      print("Stores available")
+      pass
 
     try:
       bopis_list = driver.find_element_by_class_name("store-list")
       bopis_stores = bopis_list.find_elements_by_class_name("store-list__item")
       for store in bopis_stores:
-        store_names.add(store.find_element_by_class_name("radio-btn__label").text)
+        store_name = store.find_element_by_class_name("radio-btn__label").text
+        # NOT WORKING
+        # store_phone = store.find_element_by_class_name("store-details__phone")
+        # phone = store_phone.find_element_by_tag_name("a").text 
+        # print(phone) #BLANK
+        # full_str = store_name + ": " + phone
+        store_names.add(store_name)
     except:
-      print("No BOPIS stores in ", city)
+      pass
 
     try:
       in_person_list = driver.find_element_by_class_name("store-list--unavailable")
       in_person_stores = in_person_list.find_elements_by_class_name("store-list__item")
       for store in in_person_stores:
-        store_names.add(store.find_element_by_class_name("store-list__store-name").text)
+        store_name = store.find_element_by_class_name("radio-btn__label").text
+        # store_phone = store.find_element_by_class_name("store-details__phone")
+        # phone = store_phone.find_element_by_class_name("inline-link").text
+        # full_str = store_name + ": " + phone
+        store_names.add(store_name)
     except:
-      print("No in-person stores in ", city)
+      pass
 
   if (len(store_names) != 0):
     print(store_names)
