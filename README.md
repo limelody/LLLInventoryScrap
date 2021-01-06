@@ -12,7 +12,7 @@ Requirements:
 * Chrome 87
 * Windows
 
-Install the appropriate chromedriver [here](https://sites.google.com/a/chromium.org/chromedriver/downloads). If not on Windows, just get the appropriate OS binary and fix line 10 to be the path to where it's located. Similarly, can switch Chrome to a different browser, and also fix line 10 to be `webdriver.Firefox()` or something.
+Install the appropriate chromedriver [here](https://sites.google.com/a/chromium.org/chromedriver/downloads) and change line 10 if it's not downloaded into this repo. If not on Windows, just get the appropriate OS binary. Similarly, can switch Chrome to a different browser, and also fix line 10 to be `webdriver.Firefox()` or something.
 
 Install Selenium:
 ``` pip install selenium ```
